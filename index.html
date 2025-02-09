@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disaster Alert Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBShBTM8cSiyCp4sxEKkGNt85nEQUwR3E" defer></script>
+  
+  <script src="map.js" defer></script>
+  <script src="alerts.js" defer></script>
+  
+</head>
+<body>
+  <div class="min-h-screen bg-gray-100">
+    <header class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 py-4">
+        <div class="flex-between">
+          <div class="flex-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon text-red-500" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <h1 class="text-2xl font-bold text-gray-900">Disaster Alert Dashboard</h1>
+          </div>
+          <div class="w-96">
+            <form id="searchForm" class="w-full">
+              <div class="relative">
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Search by location..."
+                  class="search-input"
+                />
+                <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6">
+      <div id="errorContainer" class="error-message hidden"></div>
+
+      <div class="grid">
+        <div class="map-container">
+          <div id="map" class="rounded-lg shadow-lg"></div>
+        </div>
+        <div class="alerts-container">
+          <div id="alertList" class="bg-white rounded-lg shadow-lg p-4 overflow-auto">
+            <h2 class="text-xl font-bold mb-4 flex-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon text-red-500" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              Recent Alerts
+            </h2>
+            <div id="alertsContent" class="space-y-4"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <h2 id="modalTitle" class="text-xl font-bold mb-4"></h2>
+        <div id="modalInfo" class="modal-info"></div>
+        <button class="close-button" onclick="app.closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
